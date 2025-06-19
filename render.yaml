@@ -3,7 +3,7 @@ services:
     name: my-django-app
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn basic_project.wsgi:application
+    startCommand: gunicorn basic_project.basic_project.wsgi:application
     workingDir: basic_project
     autoDeploy: true
     envVars:
