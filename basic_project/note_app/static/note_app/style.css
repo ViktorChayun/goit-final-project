@@ -13,3 +13,21 @@ mark {
     padding: 0 2px;
     border-radius: 3px;
 }
+
+.card {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  border: 1px solid #838687;
+}
+
+
+.page-link {
+  transition: all 0.2s ease-in-out;
+  border-radius: 6px;
+}
+
+.page-link:hover {
+  background-color: var(--bs-primary);
+  color: #fff;
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+}
