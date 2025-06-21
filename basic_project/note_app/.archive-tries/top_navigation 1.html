@@ -1,8 +1,7 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom sticky-top shadow-sm">
-<!-- <nav class="navbar navbar-expand-lg border-bottom bg-body-tertiary shadow-sm"> -->
+<nav class="navbar navbar-expand-lg border-bottom bg-body-tertiary shadow-sm">
 <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom"> -->
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'main' %}">📝 Personal Assistant</a>
+    <a class="navbar-brand" href="{% url 'note_app:main' %}">📝 Personal Assistant</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
             aria-expanded="false" aria-label="Toggle navigation">
@@ -14,38 +13,24 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <a class="nav-link {% if request.resolver_match.url_name == 'main' %}active{% endif %}"
-             href="{% url 'main' %}">Home</a>
+             href="{% url 'note_app:main' %}">Home</a>
         </li>
-        {% if user.is_authenticated %}        
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle {% if request.resolver_match.namespace == 'note_app' %}active{% endif %}" href="#" id="notesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Notes
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="{% url 'note_app:note-main' %}">📋 All Notes</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="{% url 'note_app:note' %}">➕ Add Note</a></li>
-              <li><a class="dropdown-item" href="{% url 'note_app:note-tag' %}">🏷️ Add/Edit Tag</a></li>
-            </ul>
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'note_app:note' %}">Add Note</a>
           </li>
-          
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle {% if request.resolver_match.namespace == 'note_app' %}active{% endif %}" href="#" id="notesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Contacts
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="{% url 'contact_app:add_contact' %}">➕ Add Contact</a></li>
-              <li><a class="dropdown-item" href="{% url 'contact_app:main' %}">📋 All Contacts</a></li>
-            </ul>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'note_app:tag' %}">Add Tag</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="">File Manager</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" href="">Scraped Data</a>
-          </li>          
+          {% if request.resolver_match.url_name == 'author-detail' %}
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'note_app:author-edit' author.id %}">Edit</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'note_app:author-delete' author.id %}">Delete</a>
+            </li>
+          {% endif %}
         {% endif %}
       </ul>
 
