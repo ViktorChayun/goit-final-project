@@ -27,8 +27,8 @@ SECRET_KEY = env("SECRET_KEY")
 UPLOADCARE_PUBLIC_KEY = env('PUBLIC_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = False
+# DEBUG = True
+DEBUG = False
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = ['*']
